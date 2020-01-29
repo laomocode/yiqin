@@ -42,5 +42,3 @@ jobs:
         commit_message: New update # optional
         # Write the given domain name to the CNAME file
         fqdn: wuhan.zw2s.ltd # optional
-      env:
-        GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
