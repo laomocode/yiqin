@@ -21,15 +21,24 @@ jobs:
     - name: runapp
       run: |
         python main.py
-    - name: Deploy to GitHub Pages
-      uses: docker://peaceiris/gh-pages:v2
-      env:
-        # 注意这里的 PERSONAL_TOKEN，由于默认的 GITHUB_TOKEN 无法触发
-        # 公共仓库的 Pages 构建，因此需要在账户设置中生成 TOKEN，并添加到
-        # 本仓库的 secrets 里
-        PERSONAL_TOKEN: 3b9988078223505647169fd35da4af65714875e0
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./dists
+    - name: GitHub Pages
+      uses: crazy-max/ghaction-github-pages@v1.2.5
       with:
-        emptyCommits: false
-
+        # GitHub repository where assets will be deployed (default current)
+        repo: yiqin
+        # Git branch where assets will be deployed
+        target_branch: # optional, default is gh-pages
+        # Create incremental commit instead of doing push force
+        keep_history: # optional, default is false
+        # Allow an empty commit to be created
+        allow_empty_commit: # optional, default is true
+        # Build directory to deploy
+        build_dir: dists
+        # Commit author's name
+        committer_name: robots # optional
+        # Commit author's email
+        committer_email: laomocode@gmail.com # optional
+        # Commit message
+        commit_message: New update # optional
+        # Write the given domain name to the CNAME file
+        fqdn: wuhan.zw2s.ltd # optional
