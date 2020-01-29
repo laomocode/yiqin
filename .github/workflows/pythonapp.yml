@@ -25,7 +25,7 @@ jobs:
       uses: crazy-max/ghaction-github-pages@v1.2.5
       with:
         # GitHub repository where assets will be deployed (default current)
-        repo: yiqin
+        repo: laomocode/yiqin
         # Git branch where assets will be deployed
         target_branch: # optional, default is gh-pages
         # Create incremental commit instead of doing push force
