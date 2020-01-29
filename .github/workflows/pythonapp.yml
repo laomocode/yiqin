@@ -35,9 +35,9 @@ jobs:
         # Build directory to deploy
         build_dir: dists
         # Commit author's name
-        committer_name: robots # optional
+        committer_name: laomocode # optional
         # Commit author's email
-        committer_email: laomocode@gmail.com # optional
+        committer_email: 3344907598@qq.com # optional
         # Commit message
         commit_message: New update # optional
         # Write the given domain name to the CNAME file
