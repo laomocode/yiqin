@@ -1,6 +1,7 @@
 from pyecharts.charts import Map
 from api import api
 from pyecharts import options as opts
+import os
 geo=Map()
 api=api()
 data=api.guonei()
@@ -18,4 +19,7 @@ for a in range(len(pingjundata)):
 pingjun=sum/len(pingjundata)
 geo.set_global_opts(title_opts=opts.TitleOpts("国内疫情地图"),visualmap_opts=opts.VisualMapOpts(max_=pingjun))
 geo.add("确诊",zhongdata, maptype="china")
+if os.path.exists('dists')==False:
+    os.mkdir('dists')
+os.chdir('dists')
 geo.render('index.html')
