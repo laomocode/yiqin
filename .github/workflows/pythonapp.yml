@@ -1,0 +1,36 @@
+name: Python application
+
+on: 
+  push:
+  schedule:
+    - cron: '0 0/30 * * * ?'
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: runapp
+      run: |
+        python main.py
+    - name: Deploy to GitHub Pages
+      uses: docker://peaceiris/gh-pages:v2
+      env:
+        # 注意这里的 PERSONAL_TOKEN，由于默认的 GITHUB_TOKEN 无法触发
+        # 公共仓库的 Pages 构建，因此需要在账户设置中生成 TOKEN，并添加到
+        # 本仓库的 secrets 里
+        PERSONAL_TOKEN: 3b9988078223505647169fd35da4af65714875e0
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./dists
+      with:
+        emptyCommits: false
+
