@@ -43,4 +43,4 @@ jobs:
         # Write the given domain name to the CNAME file
         fqdn: wuhan.zw2s.ltd # optional
       env:
-        GITHUB_PAT: 3b9988078223505647169fd35da4af65714875e0
+        GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
