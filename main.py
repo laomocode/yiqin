@@ -3,6 +3,7 @@ from api import api
 from pyecharts import options as opts
 import os
 import time
+os.environ['TZ'] = 'Asia/Shanghai'
 geo=Map()
 api=api()
 data=api.guonei()
