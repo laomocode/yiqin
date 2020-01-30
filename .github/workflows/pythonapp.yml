@@ -21,26 +21,16 @@ jobs:
     - name: runapp
       run: |
         python main.py
-    - name: GitHub Pages
-      uses: crazy-max/ghaction-github-pages@v1.2.5
+    - name: Tencent COS Action
+      uses: zkqiang/tencent-cos-action@v0.1.0
       with:
-        # GitHub repository where assets will be deployed (default current)
-        repo: laomocode/yiqin
-        # Git branch where assets will be deployed
-        target_branch: # optional, default is gh-pages
-        # Create incremental commit instead of doing push force
-        keep_history: # optional, default is false
-        # Allow an empty commit to be created
-        allow_empty_commit: # optional, default is true
-        # Build directory to deploy
-        build_dir: dists
-        # Commit author's name
-        committer_name: laomocode # optional
-        # Commit author's email
-        committer_email: 3344907598@qq.com # optional
-        # Commit message
-        commit_message: New update # optional
-        # Write the given domain name to the CNAME file
-        fqdn: wuhan.zw2s.ltd # optional
-      env:
-        GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+        # COSCMD args, detail: https://cloud.tencent.com/document/product/436/10976
+        args: delete -r -f / && upload -r ./dists/ /
+        # Tencent cloud SecretId, from: https://console.cloud.tencent.com/cam/capi
+        secret_id: ${{ secrets.SECRET_ID }}
+        # Tencent cloud SecretKey, from: https://console.cloud.tencent.com/cam/capi
+        secret_key: ${{ secrets.SECRET_KEY }}
+        # COS bucket name
+        bucket: ${{ secrets.BUCKET }}
+        # COS bucket region, detail: https://cloud.tencent.com/document/product/436/6224
+        region: ap-shanghai
