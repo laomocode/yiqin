@@ -20,7 +20,7 @@ jobs:
         pip install -r requirements.txt
     - name: runapp
       run: |
-        python main.py
+        python mainci.py
     - name: Tencent COS Action
       uses: zkqiang/tencent-cos-action@v0.1.0
       with:
