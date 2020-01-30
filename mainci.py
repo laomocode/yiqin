@@ -1,13 +1,14 @@
 from pyecharts.charts import Map
 from api import api
 from pyecharts import options as opts
-import os
-import time
+from os import mkdir,chdir
+from os.path import exists
+from time import strftime,localtime
 geo=Map()
 api=api()
 data=api.guonei()
 data2=api.data()
-updatetime=time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(data2['modifyTime']/1000+28800))
+updatetime=strftime("%Y-%m-%d %H:%M:%S",localtime(data2['modifyTime']/1000+28800))
 zhongdata=[]
 deaddata=[]
 zhiyu=[]
@@ -29,6 +30,6 @@ geo.set_global_opts(title_opts=opts.TitleOpts(title="国内疫情地图",subtitl
 geo.add("确诊",zhongdata, maptype="china")
 geo.add("死亡",deaddata,maptype="china")
 geo.add("治愈",zhiyu,maptype="china")
-os.mkdir('dists')
-os.chdir('dists')
+mkdir('dists')
+chdir('dists')
 geo.render('index.html')
