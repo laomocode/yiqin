@@ -3,4 +3,4 @@ include
 lib
 .Python
 __pycache__
-dists
+.vscode

@@ -25,7 +25,7 @@ jobs:
       uses: zkqiang/tencent-cos-action@v0.1.0
       with:
         # COSCMD args, detail: https://cloud.tencent.com/document/product/436/10976
-        args: delete -r -f / && upload -r ./dists/ /
+        args: delete -r -f / && upload ./index.html /
         # Tencent cloud SecretId, from: https://console.cloud.tencent.com/cam/capi
         secret_id: ${{ secrets.SECRET_ID }}
         # Tencent cloud SecretKey, from: https://console.cloud.tencent.com/cam/capi

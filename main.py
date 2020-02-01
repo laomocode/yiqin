@@ -1,8 +1,6 @@
 from pyecharts.charts import Map
 from api import api
 from pyecharts import options as opts
-from os import mkdir,chdir
-from os.path import exists
 from time import strftime,localtime
 geo=Map()
 api=api()
@@ -16,9 +14,6 @@ for a in range(len(data)):
     tempdata.append(data[a]['confirmedCount'])
     zhongdata.append(tempdata)
 pingjun=data2['confirmedCount']/len(data)
-geo.set_global_opts(title_opts=opts.TitleOpts(title="国内疫情地图",subtitle="数据来自丁香园，截止时间："+updatetime),visualmap_opts=opts.VisualMapOpts(max_=pingjun),legend_opts=opts.LegendOpts(is_show=False))
+geo.set_global_opts(title_opts=opts.TitleOpts(title="国内疫情地图",subtitle="共确诊"+str(data2['confirmedCount'])+"例，数据来自丁香园，截止时间："+updatetime),visualmap_opts=opts.VisualMapOpts(max_=pingjun),legend_opts=opts.LegendOpts(is_show=False))
 geo.add("确诊",zhongdata, maptype="china")
-if exists('dists')==False:
-    mkdir('dists')
-chdir('dists')
 geo.render('index.html')
