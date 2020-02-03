@@ -14,13 +14,16 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.8
+    - name: Set Timezone
+        run: /
+          sudo timedatectl set-timezone 'Asia/Shanghai'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: runapp
       run: |
-        python mainci.py
+        python main.py
     - name: Tencent COS Action
       uses: zkqiang/tencent-cos-action@v0.1.0
       with:
