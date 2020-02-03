@@ -4,3 +4,5 @@ lib
 .Python
 __pycache__
 .vscode
+.DS_Store
+index.html
