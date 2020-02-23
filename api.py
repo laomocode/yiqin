@@ -8,7 +8,7 @@ else:
 class api:
     def __init__(self):
         ua=UserAgent()
-        content=get("https://3g.dxy.cn/newh5/view/pneumonia",headers={"User-Agent":ua.chrome})
+        content=get("https://3g.dxy.cn/newh5/view/pneumonia",headers={"User-Agent":ua.random})
         content.encoding='utf-8'
         data=content.text
         self.bs = BeautifulSoup(data,'html.parser')
