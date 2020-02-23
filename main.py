@@ -2,8 +2,10 @@ from pyecharts.charts import Map
 from api import api
 from pyecharts import options as opts
 from time import strftime,localtime
+from fake_useragent import UserAgent
 geo=Map()
-api=api()
+ua=UserAgent()
+api=api(ua=ua.random)
 data=api.guonei()
 data2=api.data()
 updatetime=strftime("%Y-%m-%d %H:%M:%S",localtime(data2['modifyTime']/1000))

@@ -4,11 +4,12 @@ else:
     from requests import get
     from bs4 import BeautifulSoup
     from json import loads
-    from fake_useragent import UserAgent
 class api:
-    def __init__(self):
-        ua=UserAgent()
-        content=get("https://3g.dxy.cn/newh5/view/pneumonia",headers={"User-Agent":ua.random})
+    def __init__(self,ua=True):
+        if ua==True:
+            content=get("https://3g.dxy.cn/newh5/view/pneumonia")
+        else:
+            content=get("https://3g.dxy.cn/newh5/view/pneumonia",headers={"User-Agent":ua})
         content.encoding='utf-8'
         data=content.text
         self.bs = BeautifulSoup(data,'html.parser')
