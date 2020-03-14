@@ -7,8 +7,7 @@ Resources:
         Description: 疫情实时情况
         Environment:
           Variables:
-            ENV_FIRST: env1
-            ENV_SECOND: env2
+            TZ: Asia/Shanghai
         Handler: index.main_handler
         MemorySize: 128
         Timeout: 3
