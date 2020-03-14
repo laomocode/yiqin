@@ -11,7 +11,7 @@ def main_handler(event, context):
     a=get("https://api.yiqin.zw2s.ltd/data")
     a.encoding='utf-8'
     data2=loads(a.text)
-    updatetime=strftime("%Y-%m-%d %H:%M:%S",localtime(data2['modifyTime']/1000+28800))
+    updatetime=strftime("%Y-%m-%d %H:%M:%S",localtime(data2['modifyTime']/1000))
     zhongdata=[]
     for a in range(len(data)):
         tempdata=[]
