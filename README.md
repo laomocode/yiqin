@@ -13,3 +13,8 @@
 以上数据来自丁香园，接口均为json格式。
 
 地址：https://yiqin.zw2s.ltd
+# 如何嵌入到网站？
+插入以下html代码：
+```html
+<iframe src="https://yiqin.zw2s.ltd/" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:1349px; height:500px;"></iframe>
+```
