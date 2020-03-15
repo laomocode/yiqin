@@ -35,3 +35,6 @@ retrying.py
 six.py
 toml.py
 pyparsing.py
+setuptools
+pkg_resources
+easy_install.py

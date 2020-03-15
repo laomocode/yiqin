@@ -1,16 +1,14 @@
 from pyecharts.charts import Map
 from pyecharts import options as opts
+from tencentserverless.scf import Client
 from time import strftime,localtime
 from requests import get
 from json import loads
 def main_handler(event, context):
-    geo=Map()
-    a=get("https://api.yiqin.zw2s.ltd/guonei")
-    a.encoding='utf-8'
-    data=loads(a.text)
-    a=get("https://api.yiqin.zw2s.ltd/data")
-    a.encoding='utf-8'
-    data2=loads(a.text)
+    geo=Map(init_opts=opts.InitOpts(page_title="国内疫情地图",js_host="https://js.yiqin.zw2s.ltd/"))
+    scf=Client(secret_id="******",secret_key="******",region="ap-shanghai")
+    data=loads(scf.invoke('guonei'))
+    data2=loads(scf.invoke('data'))
     updatetime=strftime("%Y-%m-%d %H:%M:%S",localtime(data2['modifyTime']/1000))
     zhongdata=[]
     for a in range(len(data)):
