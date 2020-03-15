@@ -2,7 +2,6 @@ from pyecharts.charts import Map
 from pyecharts import options as opts
 from tencentserverless.scf import Client
 from time import strftime,localtime
-from requests import get
 from json import loads
 def main_handler(event, context):
     geo=Map(init_opts=opts.InitOpts(page_title="国内疫情地图",js_host="https://js.yiqin.zw2s.ltd/"))
